@@ -184,8 +184,11 @@ class MethodRegistry(object):
             for requirement in auth_rule.requirements:
                 provider_id = requirement.providerId
                 if provider_id and requirement.audiences:
-                    audiences = requirement.audiences.split(u",")
-                    provider_ids_to_audiences[provider_id] = audiences
+                    if requirement.audiences:
+                        audiences = requirement.audiences.split(u",")
+                        provider_ids_to_audiences[provider_id] = audiences
+                    else:
+                        provider_ids_to_audiences[provider_id] = None
             auth_infos[selector] = AuthInfo(provider_ids_to_audiences)
         return auth_infos
 

@@ -183,7 +183,7 @@ class MethodRegistry(object):
             provider_ids_to_audiences = {}
             for requirement in auth_rule.requirements:
                 provider_id = requirement.providerId
-                if provider_id and requirement.audiences:
+                if provider_id:
                     if requirement.audiences:
                         audiences = requirement.audiences.split(u",")
                         provider_ids_to_audiences[provider_id] = audiences
